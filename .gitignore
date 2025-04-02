@@ -1,0 +1,14 @@
+
+/target/
+
+*.log
+*.gz
+hs_err_pid*.log
+
+/.idea/
+*.iml
+
+
+/.mvn/
+mvnw
+mvnw.cmd
