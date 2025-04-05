@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.Optional;
 
-public interface VehicleRepository extends JpaRepository<Vehicle, String>, VehicleJdbcRepository {
+public interface VehicleRepository extends JpaRepository<Vehicle, String>, JpaSpecificationExecutor<Vehicle>, VehicleJdbcRepository {
     Optional<Vehicle> findByVin(String vin);
 }
