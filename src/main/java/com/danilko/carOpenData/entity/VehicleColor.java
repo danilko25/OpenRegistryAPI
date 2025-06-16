@@ -24,4 +24,13 @@ public enum VehicleColor {
     public String toUkrainian() {
         return colorUkr;
     }
+
+    public static VehicleColor fromValue(String text) {
+        for (VehicleColor color : VehicleColor.values()) {
+            if (color.colorUkr.equalsIgnoreCase(text)) { // Використовуємо equalsIgnoreCase для регістронезалежного порівняння
+                return color;
+            }
+        }
+        throw new IllegalArgumentException("Немає константи VehicleColor з значенням: " + text);
+    }
 }
