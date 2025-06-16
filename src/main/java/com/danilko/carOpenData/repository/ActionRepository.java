@@ -23,6 +23,16 @@ public interface ActionRepository extends JpaRepository<Action, Long>, JpaSpecif
 
     void deleteAllByRegDateIsBetween(LocalDate from, LocalDate to);
 
+    List<Action> findFirst1000By();
+
+    List<Action> findFirst10000By();
+
+    List<Action> findFirst100000By();
+
+    List<Action> findFirst1000000By();
+
+
+
 }
 
 
