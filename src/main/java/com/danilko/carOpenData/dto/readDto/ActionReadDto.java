@@ -16,7 +16,7 @@ public class ActionReadDto {
     private LocalDate regDate;
     private OperationReadDto operationReadDto;
     private DepartmentReadDto departmentReadDto;
-//    private VehicleReadDto vehicleReadDto;
-    private String vehicleVin;
+    private VehicleReadDto vehicleReadDto;
+//    private String vehicleVin;
     private String numberPlate;
 }

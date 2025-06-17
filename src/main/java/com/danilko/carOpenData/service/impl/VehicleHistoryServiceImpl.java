@@ -20,27 +20,27 @@ public class VehicleHistoryServiceImpl implements VehicleHistoryService {
     private final WantedVehicleService wantedVehicleService;
     private final VehicleService vehicleService;
 
-//    @Override
-//    public VehicleHistoryDto findByNumberPlate(String numberPlate) {
-//        var actionOpt = actionService.findByNumberPlate(numberPlate);
-//        if (actionOpt.isPresent()){
-//            var actionReadDto = actionOpt.get();
-//            var vehicleVin = actionReadDto.getVehicleReadDto().getVin();
-//            var stealInfo = wantedVehicleService.isWanted(vehicleVin, numberPlate);
-//            return new VehicleHistoryDto(Optional.of(actionReadDto.getVehicleReadDto()), stealInfo, actionService.findAllByVehicleVin(actionReadDto.getVehicleReadDto().getVin()));
-//        }else return new VehicleHistoryDto(Optional.empty(),wantedVehicleService.isWanted(null, numberPlate), Collections.emptyList());
-//    }
-
     @Override
     public VehicleHistoryDto findByNumberPlate(String numberPlate) {
         var actionOpt = actionService.findByNumberPlate(numberPlate);
         if (actionOpt.isPresent()){
             var actionReadDto = actionOpt.get();
-            var vehicleOpt = vehicleService.findByVin(actionReadDto.getVehicleVin());
-            var stealInfo = wantedVehicleService.isWanted(actionReadDto.getVehicleVin(), numberPlate);
-            return new VehicleHistoryDto(vehicleOpt, stealInfo, actionService.findAllByVehicleVin(actionReadDto.getVehicleVin()));
+            var vehicleVin = actionReadDto.getVehicleReadDto().getVin();
+            var stealInfo = wantedVehicleService.isWanted(vehicleVin, numberPlate);
+            return new VehicleHistoryDto(Optional.of(actionReadDto.getVehicleReadDto()), stealInfo, actionService.findAllByVehicleVin(actionReadDto.getVehicleReadDto().getVin()));
         }else return new VehicleHistoryDto(Optional.empty(),wantedVehicleService.isWanted(null, numberPlate), Collections.emptyList());
     }
+
+//    @Override
+//    public VehicleHistoryDto findByNumberPlate(String numberPlate) {
+//        var actionOpt = actionService.findByNumberPlate(numberPlate);
+//        if (actionOpt.isPresent()){
+//            var actionReadDto = actionOpt.get();
+//            var vehicleOpt = vehicleService.findByVin(actionReadDto.getVehicleVin());
+//            var stealInfo = wantedVehicleService.isWanted(actionReadDto.getVehicleVin(), numberPlate);
+//            return new VehicleHistoryDto(vehicleOpt, stealInfo, actionService.findAllByVehicleVin(actionReadDto.getVehicleVin()));
+//        }else return new VehicleHistoryDto(Optional.empty(),wantedVehicleService.isWanted(null, numberPlate), Collections.emptyList());
+//    }
 
     @Override
     public VehicleHistoryDto findByVin(String vin) {
